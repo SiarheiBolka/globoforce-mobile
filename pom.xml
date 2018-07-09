@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.globoforce</groupId>
+  <artifactId>globoforce-mobile</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+  <name>Carina Demo</name>
+  <url>http://www.qaprosoft.com/</url>
+
+  <parent>
+    <groupId>com.globoforce.autotest.parent</groupId>
+    <artifactId>test-automation-parent</artifactId>
+    <version>TRUNK-SNAPSHOT</version>
+  </parent>
+	
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <carina-core.version>LATEST</carina-core.version>
+    <httpclient.version>4.5.3</httpclient.version>
+    <java.version>1.8</java.version>
+    <suite>api</suite>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>qaprosoft_releases</id>
+      <name>Qaprosoft Releases</name>
+      <url>http://ci.qaprosoft.com:8081/nexus/content/repositories/releases/</url>
+      <releases>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>qaprosoft_snapshots</id>
+      <name>Qaprosoft Snapshots</name>
+      <url>http://ci.qaprosoft.com:8081/nexus/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+      </snapshots>
+    </repository>
+	<repository>
+		<id>public</id>
+		<name>Public Repositories</name>
+		<url>http://build-nexus:8081/nexus/content/groups/public</url>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+	<repository>
+		<id>snapshots</id>
+		<name>Globoforce Snapshots</name>
+		<url>http://build-nexus:8081/nexus/content/repositories/snapshots</url>
+		<releases>
+			<enabled>false</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+	<repository>
+		<id>releases</id>
+		<name>Globoforce Releases</name>
+		<url>http://build-nexus:8081/nexus/content/repositories/releases</url>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>false</enabled>
+		</snapshots>
+	</repository>
+	<repository>
+		<id>central</id>
+		<url>http://repo1.maven.org/maven2/</url>
+	</repository>	
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.qaprosoft</groupId>
+      <artifactId>carina-core</artifactId>
+      <version>${carina-core.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>${httpclient.version}</version>
+    </dependency>
+
+	<dependency>
+		<groupId>com.globoforce.autotest.parent</groupId>
+		<artifactId>automation-database</artifactId>
+		<version>TRUNK-SNAPSHOT</version>
+	</dependency>
+
+	<dependency>
+		<groupId>com.globoforce.autotest.parent</groupId>
+		<artifactId>automation-jira-publisher</artifactId>
+		<version>TRUNK-SNAPSHOT</version>
+	</dependency>
+
+	<dependency>
+		<groupId>com.globoforce.autotest.parent</groupId>
+		<artifactId>automation-webservices</artifactId>
+		<version>TRUNK-SNAPSHOT</version>
+	</dependency>
+
+	<dependency>
+		<groupId>com.globoforce.autotest.parent</groupId>
+		<artifactId>automation-webdriver</artifactId>
+		<version>TRUNK-SNAPSHOT</version>
+	</dependency>
+
+	<dependency>
+		<groupId>com.globoforce.autotest.parent</groupId>
+		<artifactId>automation-common</artifactId>
+		<version>TRUNK-SNAPSHOT</version>
+	</dependency>
+</dependencies>
+	
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.2</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>2.18.1</version>
+			<configuration>
+				<useSystemClassLoader>false</useSystemClassLoader>
+				<suiteXmlFiles>
+					<suiteXmlFile>${project.build.directory}/test-classes/TestNG_suites/${suite}.xml</suiteXmlFile>
+				</suiteXmlFiles>
+				<properties>
+					<property>
+						<name>listener</name>
+						<value>com.qaprosoft.zafira.listener.ZafiraListener,com.qaprosoft.carina.core.foundation.listeners.HealthCheckListener</value>
+					</property>
+				</properties>
+			</configuration>
+		</plugin>
+    </plugins>
+  </build>
+</project>

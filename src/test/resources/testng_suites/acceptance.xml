@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite verbose="1" name="Android Acceptance Tests" skipfailedinvocationcounts="false" junit="false" parallel="tests" annotations="JDK">
+
+	<parameter name="suiteOwner" value="sbolka" />
+
+	<parameter name="overrideFields" value="driver_mode=method_mode"/>
+	
+	<listeners>
+		<listener class-name="com.qaprosoft.carina.core.foundation.retry.AnnotationTransformer" />
+    </listeners>
+
+	<test name="Registration Test" enabled="true">
+		<classes>
+			<class name="com.globoforce.autotest.registration.RegistrationTest" />
+		</classes>
+	</test>
+	
+	<test name="Login Test" enabled="true">
+		<classes>
+			<class name="com.globoforce.autotest.registration.LoginTest" />
+		</classes>
+	</test>
+	
+</suite>
