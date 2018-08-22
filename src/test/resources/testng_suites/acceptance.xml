@@ -18,7 +18,7 @@
 	
 	<test name="Login Test" enabled="true">
 		<classes>
-			<class name="com.globoforce.autotest.registration.LoginTest" />
+			<class name="com.globoforce.autotest.registration.RegistrationInTest" />
 		</classes>
 	</test>
 	

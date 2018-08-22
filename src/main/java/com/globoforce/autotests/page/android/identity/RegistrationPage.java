@@ -3,9 +3,7 @@ package com.globoforce.autotests.page.android.identity;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import com.globoforce.autotests.page.common.identity.LoginPageBase;
 import com.globoforce.autotests.page.common.identity.RegistrationPageBase;
-import com.qaprosoft.carina.core.foundation.utils.factory.CustomTypePageFactory;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 
