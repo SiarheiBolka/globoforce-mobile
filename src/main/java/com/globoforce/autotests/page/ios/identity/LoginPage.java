@@ -4,54 +4,41 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.globoforce.autotests.page.common.identity.LoginPageBase;
-import com.globoforce.autotests.page.common.identity.RegistrationPageBase;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 
-@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = RegistrationPageBase.class)
-public class LoginPage extends RegistrationPageBase {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginPageBase.class)
+public class LoginPage extends LoginPageBase {
 
-    @FindBy(xpath = "//XCUIElementTypeStaticText[@name='EMAIL']/following::XCUIElementTypeTextField")
-    private ExtendedWebElement emailOrCodeEditText;
+    @FindBy(xpath = "//XCUIElementTypeTextField[@name=\"LoginScreenUserNameField\"]")
+    private ExtendedWebElement loginEditText;
 
-    @FindBy(xpath = "//XCUIElementTypeStaticText[@name='PASSWORD']/following::XCUIElementTypeSecureTextField")
-    private ExtendedWebElement submitButton;
+    @FindBy(xpath = "//XCUIElementTypeSecureTextField[@name=\"LoginScreenPasswordField\"]")
+    private ExtendedWebElement passwordEditText;
     
-    @FindBy(xpath = "//XCUIElementTypeStaticText[@name='PASSWORD']/following::XCUIElementTypeSecureTextField")
-    private ExtendedWebElement okPopupButton;
+    @FindBy(xpath = "//XCUIElementTypeButton[@name=\"LoginScreenSignInButton\"]")
+    private ExtendedWebElement loginButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
 	@Override
-	public void setEnvironment(String serverName) {
-		emailOrCodeEditText.type(serverName);
+	public void setUsername(String username) {
+		loginEditText.type(username);
 		
 	}
 
 	@Override
-	public void clickSubmitButton() {
-		submitButton.click();
+	public void setPassword(String password) {
+		passwordEditText.type(password);
 		
 	}
 
 	@Override
-	public void acceptServerChanging() {
-		okPopupButton.click();
+	public void clickLoginButton() {
+		loginButton.click();
 		
-	}
-	
-	@Override
-	public void setCustormer(String customerName) {
-		emailOrCodeEditText.type(customerName);
-		
-	}
-
-	@Override
-	public LoginPageBase clickSubmitButtonAfterSetEnv() {
-		// TODO Auto-generated method stub
-		return null;
 	}
  
 }

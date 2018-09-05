@@ -40,7 +40,5 @@ public class LoginPage extends LoginPageBase {
 		loginButton.click();
 		
 	}
-    
-
  
 }

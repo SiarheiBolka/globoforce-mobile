@@ -10,16 +10,16 @@
 		<listener class-name="com.qaprosoft.carina.core.foundation.retry.AnnotationTransformer" />
     </listeners>
 
-	<test name="Registration Test" enabled="true">
+	<test name="Registration and Login Test" enabled="true">
 		<classes>
-			<class name="com.globoforce.autotest.registration.RegistrationTest" />
+			<class name="com.globoforce.autotest.nativeapp.registration.RegistrationTest" />
 		</classes>
 	</test>
 	
-	<test name="Login Test" enabled="true">
+	<!--test name="Login Test" enabled="true">
 		<classes>
 			<class name="com.globoforce.autotest.registration.RegistrationInTest" />
 		</classes>
-	</test>
+	</test-->
 	
 </suite>

@@ -25,7 +25,7 @@ public class RegistrationTest extends AbstractTest
 	private static final String PASSWORD = "7686041";
 	
 	
-	@Test(description = "JIRA#MOB-xxx")
+	@Test(description = "JIRA#MOB-1171")
 	@MethodOwner(owner = "sbolka")
 	@Parameters
 	public void registerAndLogin()
